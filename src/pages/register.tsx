@@ -71,7 +71,7 @@ export default function FormularioPaciente() {
         videoRef.current.srcObject = stream
       }
     } catch (err) {
-      console.error("Error accessing the camera:", err)
+      console.error("Error accediendo a la cámara:", err)
     }
   }
 
@@ -146,18 +146,18 @@ export default function FormularioPaciente() {
                   </DialogTrigger>
                   <DialogContent className="max-w-4xl">
                     <DialogHeader>
-                      <DialogTitle>Capture Your ID</DialogTitle>
+                      <DialogTitle>Capture su INE</DialogTitle>
                     </DialogHeader>
                     <div className="flex flex-col md:flex-row">
                       <div className="w-full md:w-1/2 p-6 border-r border-[#3B82F6]">
                         <div className="aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden mb-4">
                           <img 
                             src="/placeholder.svg?height=300&width=450" 
-                            alt="ID Example" 
+                            alt="Ejemplo de INE" 
                             className="w-full h-full object-cover"
                           />
                         </div>
-                        <p className="text-center text-gray-600">Example ID</p>
+                        <p className="text-center text-gray-600">Ejemplo de INE</p>
                       </div>
                       <div className="w-full md:w-1/2 p-6">
                         {!isCameraActive && !capturedImage && (
@@ -166,7 +166,7 @@ export default function FormularioPaciente() {
                               onClick={() => setIsCameraActive(true)}
                               className="bg-[#2563EB] hover:bg-[#3B82F6] text-white"
                             >
-                              <Camera className="mr-2 h-4 w-4" /> Activate Camera
+                              <Camera className="mr-2 h-4 w-4" /> Activar Cámara
                             </Button>
                           </div>
                         )}
@@ -182,7 +182,7 @@ export default function FormularioPaciente() {
                               onClick={capturePhoto}
                               className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-[#2563EB] hover:bg-[#3B82F6] text-white"
                             >
-                              Capture Photo
+                              Capturar Foto
                             </Button>
                           </div>
                         )}
@@ -190,7 +190,7 @@ export default function FormularioPaciente() {
                           <div className="relative aspect-[3/2] bg-black rounded-lg overflow-hidden mb-4">
                             <img 
                               src={capturedImage} 
-                              alt="Captured ID" 
+                              alt="INE Capturada" 
                               className="w-full h-full object-cover" 
                             />
                             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-4">
@@ -198,185 +198,189 @@ export default function FormularioPaciente() {
                                 onClick={retakePhoto}
                                 className="bg-[#2563EB] hover:bg-[#3B82F6] text-white"
                               >
-                                <RotateCw className="mr-2 h-4 w-4" /> Retake
+                                <RotateCw className="mr-2 h-4 w-4" /> Reintentar
                               </Button>
                               {isFirstSide && (
                                 <Button
                                   onClick={proceedToNextSide}
                                   className="bg-[#2563EB] hover:bg-[#3B82F6] text-white"
                                 >
-                                  Next <ArrowRight className="ml-2 h-4 w-4" />
+                                  Siguiente <ArrowRight className="ml-2 h-4 w-4" />
                                 </Button>
                               )}
                             </div>
                           </div>
                         )}
+                        <canvas ref={canvasRef} className="hidden" />
                       </div>
                     </div>
                   </DialogContent>
                 </Dialog>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="nombre">Nombre Completo</Label>
-                <Input id="nombre" {...register("nombre")} placeholder="Ingrese su nombre completo" />
-                {errors.nombre && <p className="text-red-500 text-sm">{errors.nombre.message}</p>}
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                <div>
+                  <Label htmlFor="nombre">Nombre Completo</Label>
+                  <Input id="nombre" placeholder="Juan Pérez" {...register("nombre")} />
+                  {errors.nombre && <p className="text-red-500 text-sm">{errors.nombre.message}</p>}
+                </div>
+
+                <div>
+                  <Label htmlFor="correo">Correo Electrónico</Label>
+                  <Input id="correo" type="email" placeholder="juan@example.com" {...register("correo")} />
+                  {errors.correo && <p className="text-red-500 text-sm">{errors.correo.message}</p>}
+                </div>
+
+                <div>
+                  <Label htmlFor="edad">Edad</Label>
+                  <Input id="edad" type="number" placeholder="30" {...register("edad")} />
+                  {errors.edad && <p className="text-red-500 text-sm">{errors.edad.message}</p>}
+                </div>
+
+                <div>
+                  <Label htmlFor="sexo">Sexo</Label>
+                  <Select {...register("sexo")}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Seleccione su sexo" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="masculino">Masculino</SelectItem>
+                      <SelectItem value="femenino">Femenino</SelectItem>
+                      <SelectItem value="otro">Otro</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  {errors.sexo && <p className="text-red-500 text-sm">{errors.sexo.message}</p>}
+                </div>
+
+                <div>
+                  <Label htmlFor="peso">Peso (kg)</Label>
+                  <Input id="peso" type="number" placeholder="70" {...register("peso")} />
+                  {errors.peso && <p className="text-red-500 text-sm">{errors.peso.message}</p>}
+                </div>
+
+                <div>
+                  <Label htmlFor="altura">Altura (cm)</Label>
+                  <Input id="altura" type="number" placeholder="170" {...register("altura")} />
+                  {errors.altura && <p className="text-red-500 text-sm">{errors.altura.message}</p>}
+                </div>
+
+                <div className="sm:col-span-2">
+                  <Label htmlFor="motivoConsulta">Motivo de la Consulta</Label>
+                  <Textarea id="motivoConsulta" placeholder="Describe tu motivo para consultar" {...register("motivoConsulta")} />
+                  {errors.motivoConsulta && <p className="text-red-500 text-sm">{errors.motivoConsulta.message}</p>}
+                </div>
+
+                <div>
+                  <Label htmlFor="ocupacion">Ocupación</Label>
+                  <Input id="ocupacion" placeholder="Ingeniero" {...register("ocupacion")} />
+                  {errors.ocupacion && <p className="text-red-500 text-sm">{errors.ocupacion.message}</p>}
+                </div>
+
+                <div>
+                  <Label htmlFor="estadoCivil">Estado Civil</Label>
+                  <Select {...register("estadoCivil")}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Seleccione su estado civil" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="soltero">Soltero</SelectItem>
+                      <SelectItem value="casado">Casado</SelectItem>
+                      <SelectItem value="divorciado">Divorciado</SelectItem>
+                      <SelectItem value="viudo">Viudo</SelectItem>
+                      <SelectItem value="otro">Otro</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  {errors.estadoCivil && <p className="text-red-500 text-sm">{errors.estadoCivil.message}</p>}
+                </div>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="correo">Correo Electrónico</Label>
-                <Input id="correo" type="email" {...register("correo")} placeholder="Ingrese su correo electrónico" />
-                {errors.correo && <p className="text-red-500 text-sm">{errors.correo.message}</p>}
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="edad">Edad</Label>
-                <Input id="edad" type="number" {...register("edad", { valueAsNumber: true })} placeholder="Ingrese su edad" />
-                {errors.edad && <p className="text-red-500 text-sm">{errors.edad.message}</p>}
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="sexo">Sexo</Label>
-                <Select onValueChange={(value) => register("sexo").onChange({ target: { value } })}>
-                  <SelectTrigger id="sexo">
-                    <SelectValue placeholder="Seleccione su sexo" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="masculino">Masculino</SelectItem>
-                    <SelectItem value="femenino">Femenino</SelectItem>
-                    <SelectItem value="otro">Otro</SelectItem>
-                  </SelectContent>
-                </Select>
-                {errors.sexo && errors.sexo.message && (<p className="text-red-500 text-sm">{errors.sexo.message}</p>)}
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="peso">Peso (kg)</Label>
-                <Input id="peso" type="number" {...register("peso", { valueAsNumber: true })} placeholder="Ingrese su peso" />
-                {errors.peso && errors.peso.message && (<p className="text-red-500 text-sm">{errors.peso.message}</p>)}
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="altura">Altura (cm)</Label>
-                <Input id="altura" type="number" {...register("altura", { valueAsNumber: true })} placeholder="Ingrese su altura" />
-                {errors.altura && errors.altura.message && (<p className="text-red-500 text-sm">{errors.altura.message}</p>)}
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="motivoConsulta">Motivo de Consulta</Label>
-                <Textarea id="motivoConsulta" {...register("motivoConsulta")} placeholder="Describa brevemente el motivo de su consulta" />
-                {errors.motivoConsulta && errors.motivoConsulta.message && (<p className="text-red-500 text-sm">{errors.motivoConsulta.message}</p>)}
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="ocupacion">Ocupación</Label>
-                <Input id="ocupacion" {...register("ocupacion")} placeholder="Ingrese su ocupación" />
-                {errors.ocupacion && typeof errors.ocupacion.message === 'string' && (<p className="text-red-500 text-sm">{errors.ocupacion.message}</p>)}
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="estadoCivil">Estado Civil</Label>
-                <Select onValueChange={(value) => register("estadoCivil").onChange({ target: { value } })}>
-                  <SelectTrigger id="estadoCivil">
-                    <SelectValue placeholder="Seleccione su estado civil" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="soltero">Soltero</SelectItem>
-                    <SelectItem value="casado">Casado</SelectItem>
-                    <SelectItem value="divorciado">Divorciado</SelectItem>
-                    <SelectItem value="viudo">Viudo</SelectItem>
-                    <SelectItem value="otro">Otro</SelectItem>
-                  </SelectContent>
-                </Select>
-                {errors.estadoCivil && typeof errors.estadoCivil.message === 'string' && (<p className="text-red-500 text-sm">{errors.estadoCivil.message}</p>)}
-              </div>
-
-              <div className="grid grid-cols-3 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="tabaquismo">Tabaquismo</Label>
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+                <div className="flex items-center space-x-2">
                   <Checkbox id="tabaquismo" {...register("tabaquismo")} />
+                  <Label htmlFor="tabaquismo">Tabaquismo</Label>
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="alcoholismo">Alcohol</Label>
+                <div className="flex items-center space-x-2">
                   <Checkbox id="alcoholismo" {...register("alcoholismo")} />
+                  <Label htmlFor="alcoholismo">Alcoholismo</Label>
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="drogas">Drogas</Label>
+                <div className="flex items-center space-x-2">
                   <Checkbox id="drogas" {...register("drogas")} />
+                  <Label htmlFor="drogas">Consumo de Drogas</Label>
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="ejercicio">Frecuencia de Ejercicio</Label>
-                <Textarea id="ejercicio" {...register("ejercicio")} placeholder="Describa su frecuencia de ejercicio" />
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                <div>
+                  <Label htmlFor="ejercicio">Frecuencia de Ejercicio</Label>
+                  <Input id="ejercicio" placeholder="3 veces por semana" {...register("ejercicio")} />
+                  {errors.ejercicio && <p className="text-red-500 text-sm">{errors.ejercicio.message}</p>}
+                </div>
+
+                <div>
+                  <Label htmlFor="alimentacion">Hábitos Alimenticios</Label>
+                  <Input id="alimentacion" placeholder="Vegetariano" {...register("alimentacion")} />
+                  {errors.alimentacion && <p className="text-red-500 text-sm">{errors.alimentacion.message}</p>}
+                </div>
+
+                <div className="sm:col-span-2">
+                  <Label htmlFor="enfermedadesPrevias">Enfermedades Previas</Label>
+                  <Textarea id="enfermedadesPrevias" placeholder="Diabetes, Asma, etc." {...register("enfermedadesPrevias")} />
+                </div>
+
+                <div className="sm:col-span-2">
+                  <Label htmlFor="cirugiasPrevias">Cirugías Previas</Label>
+                  <Textarea id="cirugiasPrevias" placeholder="Apendicitis, etc." {...register("cirugiasPrevias")} />
+                </div>
+
+                <div className="sm:col-span-2">
+                  <Label htmlFor="alergias">Alergias</Label>
+                  <Textarea id="alergias" placeholder="Polen, mariscos, etc." {...register("alergias")} />
+                </div>
+
+                <div className="sm:col-span-2">
+                  <Label htmlFor="medicamentosActuales">Medicamentos Actuales</Label>
+                  <Textarea id="medicamentosActuales" placeholder="Ibuprofeno, Insulina, etc." {...register("medicamentosActuales")} />
+                </div>
+
+                <div className="sm:col-span-2">
+                  <Label htmlFor="hospitalizacionesPrevias">Hospitalizaciones Previas</Label>
+                  <Textarea id="hospitalizacionesPrevias" placeholder="Accidente, etc." {...register("hospitalizacionesPrevias")} />
+                </div>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="alimentacion">Hábitos Alimenticios</Label>
-                <Textarea id="alimentacion" {...register("alimentacion")} placeholder="Describa sus hábitos alimenticios" />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="enfermedadesPrevias">Enfermedades Previas</Label>
-                <Textarea id="enfermedadesPrevias" {...register("enfermedadesPrevias")} placeholder="Indique enfermedades previas" />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="cirugiasPrevias">Cirugías Previas</Label>
-                <Textarea id="cirugiasPrevias" {...register("cirugiasPrevias")} placeholder="Indique cirugías previas" />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="alergias">Alergias</Label>
-                <Textarea id="alergias" {...register("alergias")} placeholder="Indique sus alergias" />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="medicamentosActuales">Medicamentos Actuales</Label>
-                <Textarea id="medicamentosActuales" {...register("medicamentosActuales")} placeholder="Indique sus medicamentos actuales" />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="hospitalizacionesPrevias">Hospitalizaciones Previas</Label>
-                <Textarea id="hospitalizacionesPrevias" {...register("hospitalizacionesPrevias")} placeholder="Indique hospitalizaciones previas" />
-              </div>
-
-              <div className="grid grid-cols-3 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="diabetes">Diabetes</Label>
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+                <div className="flex items-center space-x-2">
                   <Checkbox id="diabetes" {...register("diabetes")} />
+                  <Label htmlFor="diabetes">Diabetes</Label>
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="hipertension">Hipertensión</Label>
+                <div className="flex items-center space-x-2">
                   <Checkbox id="hipertension" {...register("hipertension")} />
+                  <Label htmlFor="hipertension">Hipertensión</Label>
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="cardiopatias">Cardiopatías</Label>
+                <div className="flex items-center space-x-2">
                   <Checkbox id="cardiopatias" {...register("cardiopatias")} />
+                  <Label htmlFor="cardiopatias">Cardiopatías</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="cancer" {...register("cancer")} />
+                  <Label htmlFor="cancer">Cáncer</Label>
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="cancer">Cáncer</Label>
-                <Checkbox id="cancer" {...register("cancer")} />
+              <div className="sm:col-span-2">
+                <Label htmlFor="otrosAntecedentes">Otros Antecedentes</Label>
+                <Textarea id="otrosAntecedentes" placeholder="Otros antecedentes relevantes" {...register("otrosAntecedentes")} />
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="otrosAntecedentes">Otros Antecedentes Familiares</Label>
-                <Textarea id="otrosAntecedentes" {...register("otrosAntecedentes")} placeholder="Indique otros antecedentes familiares" />
-              </div>
-
-              <Button type="submit" className="w-full bg-blue-500 hover:bg-blue-600" disabled={isSubmitting}>
-                {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : "Registrar Paciente"}
-              </Button>
+              <CardFooter>
+                <Button type="submit" className="w-full bg-blue-500 hover:bg-blue-600">
+                  {isSubmitting ? <Loader2 className="animate-spin mr-2 h-4 w-4" /> : 'Registrar Paciente'}
+                </Button>
+              </CardFooter>
             </form>
           </ScrollArea>
         </CardContent>
-        <CardFooter>
-          <p className="text-center text-sm text-gray-500">Sus datos estarán seguros y no serán compartidos con terceros.</p>
-        </CardFooter>
       </Card>
-      <canvas ref={canvasRef} style={{ display: 'none' }} width={450} height={300} />
     </div>
   )
 }

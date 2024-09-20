@@ -41,16 +41,16 @@ export default function Component() {
           <div className="flex justify-center mb-4">
             <Stethoscope className="h-12 w-12 text-blue-600 sm:h-16 sm:w-16 lg:h-20 lg:w-20" />
           </div>
-          <CardTitle className="text-2xl sm:text-3xl lg:text-4xl font-bold">User Login</CardTitle>
+          <CardTitle className="text-2xl sm:text-3xl lg:text-4xl font-bold">Inicio de sesión</CardTitle>
         </CardHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">Correo Electrónico</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="doctor@example.com"
+                placeholder="doctor@ejemplo.com"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -58,7 +58,7 @@ export default function Component() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">Contraseña</Label>
               <Input
                 id="password"
                 type="password"
@@ -76,14 +76,14 @@ export default function Component() {
           </CardContent>
           <CardFooter>
             <Button type="submit" className="w-full py-2 sm:py-3 lg:py-4 text-lg sm:text-xl lg:text-2xl">
-              Log in
+              Iniciar sesión
             </Button>
           </CardFooter>
         </form>
       </Card>
       {isAuthenticated && (
         <div className="text-center mt-4 text-green-600">
-          Login successful!
+          ¡Inicio de sesión exitoso!
         </div>
       )}
     </div>

@@ -12,85 +12,55 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { BarChart as RechartsBarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart as RechartsPieChart, Pie, Cell, LineChart as RechartsLineChart, Line } from 'recharts'
 
 const menuItems = [
-  { id: 'demographics', label: 'Demographics', icon: BarChart },
-  { id: 'medicalHistory', label: 'Medical History', icon: LineChart },
+  { id: 'demographics', label: 'Demografía', icon: BarChart },
+  { id: 'medicalHistory', label: 'Historial Médico', icon: LineChart },
 ]
 
 const mockPatients = [
   { 
     id: 1, 
-    name: "John Doe", 
+    name: "Alex Tinoco", 
     age: 35, 
     lastVisit: "2023-05-15", 
-    condition: "Hypertension",
-    email: "john.doe@example.com",
-    phone: "+1 (555) 123-4567",
-    address: "123 Main St, Anytown, USA",
-    medicalHistory: "Patient has a history of hypertension diagnosed 3 years ago. Currently on lisinopril 10mg daily.",
-    allergies: "Penicillin",
-    medications: "Lisinopril 10mg daily",
+    condition: "Hipertensión",
+    email: "alex@example.com",
+    phone: "6182318481",
+    address: "Avenida Principal 123, Ciudad de México, México",
+    medicalHistory: "El paciente tiene antecedentes de hipertensión diagnosticada hace 3 años. Actualmente toma lisinopril 10mg diarios.",
+    allergies: "Penicilina",
+    medications: "Lisinopril 10mg diarios",
     lastBloodPressure: "130/85",
     lastHeartRate: "72 bpm"
   },
   { 
     id: 2, 
-    name: "Jane Smith", 
+    name: "Diego Antunez", 
     age: 28, 
     lastVisit: "2023-05-18", 
-    condition: "Migraine",
-    email: "jane.smith@example.com",
-    phone: "+1 (555) 987-6543",
-    address: "456 Elm St, Somewhere, USA",
-    medicalHistory: "Patient suffers from chronic migraines, onset 5 years ago. Triggers include stress and lack of sleep.",
-    allergies: "None known",
-    medications: "Sumatriptan as needed",
+    condition: "Migraña",
+    email: "diego.antunez@example.com",
+    phone: "6182302940",
+    address: "Calle Principal 456, Ciudad de México, México",
+    medicalHistory: "La paciente sufre de migrañas crónicas desde hace 5 años. Los desencadenantes incluyen estrés y falta de sueño.",
+    allergies: "Ninguna conocida",
+    medications: "Sumatriptán según sea necesario",
     lastBloodPressure: "120/80",
     lastHeartRate: "68 bpm"
   },
   { 
     id: 3, 
-    name: "Robert Johnson", 
+    name: "Diego Diaz", 
     age: 45, 
     lastVisit: "2023-05-20", 
-    condition: "Type 2 Diabetes",
-    email: "robert.johnson@example.com",
-    phone: "+1 (555) 246-8135",
-    address: "789 Oak St, Elsewhere, USA",
-    medicalHistory: "Diagnosed with Type 2 Diabetes 2 years ago. Managing with diet and medication.",
-    allergies: "Sulfa drugs",
-    medications: "Metformin 500mg twice daily",
+    condition: "Diabetes Tipo 2",
+    email: "diego.diaz@example.com",
+    phone: "6182038409",
+    address: "Calle de la Rosa 789, Ciudad de México, México",
+    medicalHistory: "Diagnosticado con Diabetes Tipo 2 hace 2 años. Manejado con dieta y medicación.",
+    allergies: "Sulfamidas",
+    medications: "Metformina 500mg dos veces al día",
     lastBloodPressure: "135/88",
     lastHeartRate: "76 bpm"
-  },
-  { 
-    id: 4, 
-    name: "Emily Brown", 
-    age: 31, 
-    lastVisit: "2023-05-22", 
-    condition: "Asthma",
-    email: "emily.brown@example.com",
-    phone: "+1 (555) 369-2580",
-    address: "101 Pine St, Nowhere, USA",
-    medicalHistory: "Asthma since childhood. Well-controlled with inhaler use.",
-    allergies: "Pollen, Dust",
-    medications: "Albuterol inhaler as needed",
-    lastBloodPressure: "118/75",
-    lastHeartRate: "70 bpm"
-  },
-  { 
-    id: 5, 
-    name: "Michael Wilson", 
-    age: 52, 
-    lastVisit: "2023-05-25", 
-    condition: "Arthritis",
-    email: "michael.wilson@example.com",
-    phone: "+1 (555) 147-2589",
-    address: "202 Maple St, Someplace, USA",
-    medicalHistory: "Osteoarthritis in both knees, diagnosed 5 years ago. Managing with physical therapy and medication.",
-    allergies: "Ibuprofen",
-    medications: "Acetaminophen as needed",
-    lastBloodPressure: "128/82",
-    lastHeartRate: "74 bpm"
   },
 ]
 
@@ -106,10 +76,10 @@ const ageAndSexData = [
 ]
 
 const geographicDistributionData = [
-  { name: 'North', value: 400 },
-  { name: 'South', value: 300 },
-  { name: 'East', value: 300 },
-  { name: 'West', value: 200 },
+  { name: 'Norte', value: 400 },
+  { name: 'Sur', value: 300 },
+  { name: 'Este', value: 300 },
+  { name: 'Oeste', value: 200 },
 ]
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042']
@@ -123,19 +93,19 @@ const nonPathologicalTrendsData = [
 ]
 
 const pathologicalDistributionData = [
-  { name: 'Hypertension', value: 30 },
+  { name: 'Hipertensión', value: 30 },
   { name: 'Diabetes', value: 25 },
-  { name: 'Asthma', value: 20 },
-  { name: 'Arthritis', value: 15 },
-  { name: 'Other', value: 10 },
+  { name: 'Asma', value: 20 },
+  { name: 'Artritis', value: 15 },
+  { name: 'Otro', value: 10 },
 ]
 
 const hereditaryDiseasesData = [
-  { disease: 'Heart Disease', frequency: 35 },
+  { disease: 'Enfermedad Cardíaca', frequency: 35 },
   { disease: 'Diabetes', frequency: 30 },
-  { disease: 'Cancer', frequency: 25 },
-  { disease: 'Alzheimer\'s', frequency: 15 },
-  { disease: 'Other', frequency: 10 },
+  { disease: 'Cáncer', frequency: 25 },
+  { disease: 'Alzheimer', frequency: 15 },
+  { disease: 'Otro', frequency: 10 },
 ]
 
 export default function Component() {
@@ -166,7 +136,7 @@ export default function Component() {
     <div className="flex flex-col h-screen w-screen bg-gradient-to-br from-blue-50 to-blue-100">
       {/* Header */}
       <header className="bg-white shadow-md p-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-blue-600">Medical Dashboard</h1>
+        <h1 className="text-2xl font-bold text-blue-600">Panel Médico</h1>
         <Sheet open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>
           <SheetTrigger asChild>
             <Button variant="outline" size="icon" className="lg:hidden">
@@ -192,7 +162,7 @@ export default function Component() {
               {/* Age and Sex Distribution */}
               <Card className="bg-white shadow-md hover:bg-blue-50 transition-colors">
                 <CardHeader className="border-b border-blue-100">
-                  <CardTitle className="text-blue-600">Age and Sex Distribution</CardTitle>
+                  <CardTitle className="text-blue-600">Distribución por Edad y Sexo</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="h-64 md:h-80">
@@ -222,7 +192,7 @@ export default function Component() {
               {/* Geographic Distribution of Patients */}
               <Card className="bg-white shadow-md hover:bg-blue-50 transition-colors">
                 <CardHeader className="border-b border-blue-100">
-                  <CardTitle className="text-blue-600">Geographic Distribution of Patients</CardTitle>
+                  <CardTitle className="text-blue-600">Distribución Geográfica de Pacientes</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="h-64 md:h-80">
@@ -252,7 +222,7 @@ export default function Component() {
               {/* Non-Pathological Background Trends */}
               <Card className="col-span-1 md:col-span-2 bg-white shadow-md hover:bg-blue-50 transition-colors">
                 <CardHeader className="border-b border-blue-100">
-                  <CardTitle className="text-blue-600">Non-Pathological Background Trends</CardTitle>
+                  <CardTitle className="text-blue-600">Tendencias de Antecedentes No Patológicos</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="h-64 md:h-80">
@@ -283,7 +253,7 @@ export default function Component() {
               {/* Distribution of Pathological Background */}
               <Card className="bg-white shadow-md hover:bg-blue-50 transition-colors">
                 <CardHeader className="border-b border-blue-100">
-                  <CardTitle className="text-blue-600">Distribution of Pathological Background</CardTitle>
+                  <CardTitle className="text-blue-600">Distribución de Antecedentes Patológicos</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="h-64 md:h-80">
@@ -313,7 +283,7 @@ export default function Component() {
               {/* Frequency of Hereditary-Familial Diseases */}
               <Card className="bg-white shadow-md hover:bg-blue-50 transition-colors">
                 <CardHeader className="border-b border-blue-100">
-                  <CardTitle className="text-blue-600">Frequency of Hereditary-Familial Diseases</CardTitle>
+                  <CardTitle className="text-blue-600">Frecuencia de Enfermedades Hereditarias-Familiares</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="h-64 md:h-80">
@@ -344,7 +314,7 @@ export default function Component() {
           {activeMenuItem === 'medicalHistory' && (
             <Card className="bg-white shadow-md">
               <CardHeader className="border-b border-blue-100">
-                <CardTitle className="text-blue-600">Patient History</CardTitle>
+                <CardTitle className="text-blue-600">Historial del Paciente</CardTitle>
               </CardHeader>
               <CardContent>
                 <ScrollArea className="h-[calc(100vh-200px)]">
@@ -361,7 +331,7 @@ export default function Component() {
                               <div className="flex-1 space-y-1">
                                 <p className="text-sm font-medium leading-none">{patient.name}</p>
                                 <p className="text-sm text-muted-foreground">
-                                  Age: {patient.age} | Last Visit: {patient.lastVisit}
+                                  Edad: {patient.age} | Última Visita: {patient.lastVisit}
                                 </p>
                               </div>
                               <div className="flex items-center">
@@ -378,43 +348,43 @@ export default function Component() {
                           </DialogHeader>
                           <div className="grid gap-4 py-4">
                             <div className="grid grid-cols-4 items-center gap-4">
-                              <Label className="text-right">Age</Label>
+                              <Label className="text-right">Edad</Label>
                               <div className="col-span-3">{patient.age}</div>
                             </div>
                             <div className="grid grid-cols-4 items-center gap-4">
-                              <Label className="text-right">Email</Label>
+                              <Label className="text-right">Correo Electrónico</Label>
                               <div className="col-span-3">{patient.email}</div>
                             </div>
                             <div className="grid grid-cols-4 items-center gap-4">
-                              <Label className="text-right">Phone</Label>
+                              <Label className="text-right">Teléfono</Label>
                               <div className="col-span-3">{patient.phone}</div>
                             </div>
                             <div className="grid grid-cols-4 items-center gap-4">
-                              <Label className="text-right">Address</Label>
+                              <Label className="text-right">Dirección</Label>
                               <div className="col-span-3">{patient.address}</div>
                             </div>
                             <div className="grid grid-cols-4 items-center gap-4">
-                              <Label className="text-right">Condition</Label>
+                              <Label className="text-right">Condición</Label>
                               <div className="col-span-3">{patient.condition}</div>
                             </div>
                             <div className="grid grid-cols-4 items-center gap-4">
-                              <Label className="text-right">Medical History</Label>
+                              <Label className="text-right">Historial Médico</Label>
                               <div className="col-span-3">{patient.medicalHistory}</div>
                             </div>
                             <div className="grid grid-cols-4 items-center gap-4">
-                              <Label className="text-right">Allergies</Label>
+                              <Label className="text-right">Alergias</Label>
                               <div className="col-span-3">{patient.allergies}</div>
                             </div>
                             <div className="grid grid-cols-4 items-center gap-4">
-                              <Label className="text-right">Medications</Label>
+                              <Label className="text-right">Medicamentos</Label>
                               <div className="col-span-3">{patient.medications}</div>
                             </div>
                             <div className="grid grid-cols-4 items-center gap-4">
-                              <Label className="text-right">Last BP</Label>
+                              <Label className="text-right">Última PA</Label>
                               <div className="col-span-3">{patient.lastBloodPressure}</div>
                             </div>
                             <div className="grid grid-cols-4 items-center gap-4">
-                              <Label className="text-right">Last HR</Label>
+                              <Label className="text-right">Última FC</Label>
                               <div className="col-span-3">{patient.lastHeartRate}</div>
                             </div>
                           </div>
