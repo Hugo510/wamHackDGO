@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const clinicaSchema = new mongoose.Schema({
     nombre: { type: String, required: true },
     direccion: {

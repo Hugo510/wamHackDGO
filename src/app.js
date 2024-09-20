@@ -6,10 +6,23 @@ const hpp = require('hpp');
 const rateLimit = require('express-rate-limit');
 const compression = require('compression');
 const { errors } = require('celebrate');
+const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
+require('dotenv').config();
+
 
 // Rutas
-const achievementRoutes = require('./routes/achievement.routes');
-const achievementUserCourseRoutes = require('./routes/achievementUserCourse.routes');
+const ocrRoutes = require('./routes/ocr.Routes');
+const chatRoutes = require('./routes/chat.Routes');
+const administradorRoutes = require('./routes/admin.Routes');
+const appointmentRoutes = require('./routes/appointment.Routes');
+const clinicRoutes = require('./routes/clinic.routes');
+const doctorRoutes = require('./routes/doctor.routes');
+const pacienteRoutes = require('./routes/paciente.routes'); 
+const rolRoutes = require('./routes/rol.routes'); 
+
+
+dotenv.config();
 
 const app = express();
 
@@ -19,6 +32,10 @@ app.use(hpp());
 app.use(compression());
 app.use(morgan('dev'));
 app.use(express.json());
+app.use(bodyParser.json()); // Parsear JSON
+app.use(bodyParser.urlencoded({ extended: true })); // Parsear formularios
+app.use('/uploads', express.static('uploads'));
+
 
 app.use((err, req, res, next) => {
     const statusCode = err.status || 500;
@@ -40,8 +57,17 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // Rutas aquí
-app.use('/api/achievements', achievementRoutes);
-app.use('/api/achievementUserCourse', achievementUserCourseRoutes);
+app.use('/api/ocr', ocrRoutes);
+app.use('/api/chat', chatRoutes);
+app.use('/api/administradores', administradorRoutes);
+app.use('/api/appointments', appointmentRoutes);
+app.use('/api/clinics', clinicRoutes);
+app.use('/api/doctors', doctorRoutes);
+app.use('/api/pacientes', pacienteRoutes);
+app.use('/api/roles', rolRoutes);
+
+
+
 
 // Manejo de errores con Celebrate
 app.use(errors());

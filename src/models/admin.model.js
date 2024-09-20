@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const administradorSchema = new mongoose.Schema({
     nombre: { type: String, required: true },
     email: { type: String, required: true },

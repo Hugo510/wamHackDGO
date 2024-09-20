@@ -1,0 +1,14 @@
+{
+    "type": "service_account",
+    "project_id": "sonic-falcon-435601-h2",
+    "private_key_id": "ddc2d2fb28de4642d1e7befe6c28fe5845911787",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCu2H+0kHfmJcWM\nMEa4cGbxGNHB9nHx5ThX/S390CDLQI7zFUyPT0uVd77POgHXSK/SA+TBfZBWEtCL\nhjB5oF1V3mlsk0hfY2R/t24yyWZN7aBrtE5oLlNp2LpylL/b9+Qu4e12mySLfiuY\njqtKSd5VvaSFxxtHFz/v7phd2H2BWKOyR2v2T4+ire7ObpyFlsgNIJwn1C5FnEMj\ndPZwaX1MWv+38zCWMMdXosvnwOxQ4j3fa7tpe52tCPuEwfFgBEhmdFZg3xZ+G/Ra\nSD1b/XLLQKlUcwQO1b1pcUF4acuO6J/Zk4gra1WftjYa52h33qq/C+elkBJVJdEB\n1KRnGBj1AgMBAAECggEAA2zyc5MxBi1PRYPcnth069xUn7w4V0jqZa7sK8DcI59M\nLa8JJPWkwXTrJBw61QDzkOXKoY/YOBd+Rn2GjZt6uKf24M2x6UyFN4tceVpAyt4Q\n+os5zgi6UaSRYpVPfPvKWLDMejpn6OO77u08peP0mzFv+77+5dGqywSdr5kCPHp7\nzKCweODUPOST9PMecKfy3vFu1ZQac4a2djsxJG94kQYJ0v+96AO6+G9pJr6f14nv\nNGCojPe1w1HtrsGFSS7beBlHEIFh42IO2Ioc6LMBqqxTm4EWi18jgfnrwfUfn5XU\nc4YonF2qEfkF9XTNzfyz5Hkn+YTnWqQMg1mIOmF/AQKBgQDgV8dZj7FC5cS5X1i0\n1/c5EwzLJfwM4EkJOlxrS02bLJST3UUnpVwFSQJMxmmZtm64n4z1JNtsMeAWAh+9\nv3vuCinvS7e13LzlURa/0WVp6ZbaTevmE027Myu/ma99Bz4BiIRCbQnG+X6s+yUy\nqD004Lx+eyYh04ds6zFhrGSc8QKBgQDHhKu3LCQO/IyHRcyn7CZuf/+GPRJXsz+w\njQ2A2gVacv56AKXhHSpLMgo/sohAoHomrsBIvDMwFFe/5BahJOPvs94bwuvieLWK\n7eMLvA5kQo/VcHUp2n91oNpLqeqjuNJ8jSZfjt/gEUODDBFPkoUsQ2J2MJ5moNcu\nxnqsBIaMRQKBgGHnzPcYD5sLXUwtATCDI8BDwQyTOimAZD9juduVVHwI+5qAMWL4\n9mzUDO3mlUVg6XcnIkQF3sCcD5hrOuD7RSGATAbDu5vhhoppVg1GXATZzVzeLroM\n6Jpu3YPTlVNyKqxOoLHAlkjAr3jcbcJqy7Nc9MYaBm0yvGJbTgS7UHlxAoGAARog\ngLCDunl2pUCjcsIBLFcUqD8qHMXmsij1TCLoKKm98hqSz/2DQEsUd2mbCxBX3GLW\nuRAhEEDsgyjVXyp+/9H0hh67gtK73fqWaHgvdCpR9RHb89E7JwEuc4CKxUC+GOYG\nsjxtzCUMRGsKpW/fwHDW2GRIW7TDu4RpJQ4ZWCkCgYEAovPJyAJkvExlkNDQely8\njmLD43X/ZPCVlSJLv/yLHQFM7EWICns4RNW1iEKcPO+Kwt0wgmtSggK80XOIJ9cV\nNyAp4GRk3B4QOSkePpgAZiVSpl5M+Eii5s+MrusVzWnUIDZm59G6UhiBnfNFZ+ge\nC5O135APW/XLfyzX8lNP1ds=\n-----END PRIVATE KEY-----\n",
+    "client_email": "vision-api@sonic-falcon-435601-h2.iam.gserviceaccount.com",
+    "client_id": "109918028587184364646",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/vision-api%40sonic-falcon-435601-h2.iam.gserviceaccount.com",
+    "universe_domain": "googleapis.com"
+  }
+  
