@@ -42,11 +42,6 @@ const pacienteSchema = new mongoose.Schema({
         telefono: String,
         parentesco: String
     },
-    rol: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Rol',
-        required: true
-    },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
 });

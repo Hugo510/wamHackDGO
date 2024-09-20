@@ -20,6 +20,7 @@ const clinicRoutes = require('./routes/clinic.routes');
 const doctorRoutes = require('./routes/doctor.routes');
 const pacienteRoutes = require('./routes/paciente.routes'); 
 const rolRoutes = require('./routes/rol.routes'); 
+const authRoutes = require('./routes/auth.routes');
 
 
 dotenv.config();
@@ -65,6 +66,7 @@ app.use('/api/clinics', clinicRoutes);
 app.use('/api/doctors', doctorRoutes);
 app.use('/api/pacientes', pacienteRoutes);
 app.use('/api/roles', rolRoutes);
+app.use('/api/auth', authRoutes);
 
 
 
