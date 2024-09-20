@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const pacienteSchema = new mongoose.Schema({
     nombre: { type: String, required: true },
     edad: { type: Number, required: true },
@@ -41,6 +40,11 @@ const pacienteSchema = new mongoose.Schema({
         nombre: String,
         telefono: String,
         parentesco: String
+    },
+    rol: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Rol',
+        required: true
     },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
