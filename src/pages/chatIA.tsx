@@ -161,7 +161,7 @@ function ChatIA() {
 const Messages = () => {
   const { messages } = useVoice();
   return (
-    <div className="absolute top-0 left-0 w-screen h-screen flex items-center justify-center">
+    <div className="absolute top-0 left-0 w-screen max-h-[50vh] overflow-scroll h-screen flex items-center justify-center">
       <div className="p-10 bg-white min-w-1/2 z-50 rounded shadow-md shadow-gray-500">
         {messages.map((msg, index) => {
           if (msg.type === "user_message" || msg.type === "assistant_message") {
