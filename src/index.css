@@ -7,3 +7,12 @@
     --radius: 0.5rem;
   }
 }
+
+@font-face {
+  font-family: "National Park";
+  src: url("/fonts/NationalPark-VariableVF.woff") format("woff");
+}
+
+body {
+  font-family: "National Park", sans-serif;
+}
