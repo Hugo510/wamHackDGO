@@ -22,7 +22,6 @@ const clinicaSchema = new mongoose.Schema({
         doctor: { type: mongoose.Schema.Types.ObjectId, ref: 'Doctor' },
         fecha: { type: Date, required: true },
         motivoCita: { type: String, required: true },
-        estatus: { type: String, enum: ['Pendiente', 'Confirmada', 'Cancelada'], default: 'Pendiente' }
     }],
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
