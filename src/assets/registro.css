@@ -1,0 +1,20 @@
+body{
+    background-color: #fff;
+}
+
+#fondo{
+    background-color: #fff;
+}
+
+.ventana_registro{
+    width: 30%;
+    height: 70%;
+    text-align: center;
+    align-items: center;
+    border-color: black;
+    border-radius: 5px;
+}
+
+h1{
+    color: black;
+}
