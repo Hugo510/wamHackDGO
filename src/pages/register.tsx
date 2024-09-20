@@ -11,7 +11,8 @@ import { Mic, ScanLine, Loader2 } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
-import { toast } from '@/components/ui/use-toast'
+import { toast } from '@/hooks/use-toast'
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 const formSchema = z.object({
   nombre: z.string().min(2, { message: "El nombre debe tener al menos 2 caracteres" }),
@@ -81,115 +82,109 @@ export default function FormularioPaciente() {
   }
 
   return (
-    <Card className="w-full max-w-2xl mx-auto">
-      <CardHeader>
-        <CardTitle className="text-2xl font-bold text-blue-600">Registro de Paciente</CardTitle>
-        <CardDescription>Por favor, ingrese sus datos para agilizar su atención médica.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-          <div className="flex justify-between items-center">
-            <Button type="button" onClick={escanearINE} className="flex items-center bg-blue-500 hover:bg-blue-600">
-              <ScanLine className="mr-2 h-4 w-4" />
-              {usarINE ? 'INE Escaneada' : 'Escanear INE'}
-            </Button>
-            <Button 
-              type="button" 
-              onClick={toggleEscucha} 
-              className={`flex items-center ${escuchando ? 'bg-red-500 hover:bg-red-600' : 'bg-blue-500 hover:bg-blue-600'}`}
-            >
-              <Mic className="mr-2 h-4 w-4" />
-              {escuchando ? 'Detener Escucha' : 'Iniciar Escucha'}
-            </Button>
-          </div>
+    <div className="w-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100 p-4">
+      <Card className="w-full max-w-3xl">
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold text-blue-600">Registro de Paciente</CardTitle>
+          <CardDescription>Por favor, ingrese sus datos para agilizar su atención médica.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ScrollArea className="h-[calc(100vh-200px)]">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              <div className="flex justify-between items-center">
+                <Button type="button" onClick={escanearINE} className="flex items-center bg-blue-500 hover:bg-blue-600">
+                  <ScanLine className="mr-2 h-4 w-4" />
+                  {usarINE ? 'INE Escaneada' : 'Escanear INE'}
+                </Button>
+                <Button 
+                  type="button" 
+                  onClick={toggleEscucha} 
+                  className={`flex items-center ${escuchando ? 'bg-red-500 hover:bg-red-600' : 'bg-blue-500 hover:bg-blue-600'}`}
+                >
+                  <Mic className="mr-2 h-4 w-4" />
+                  {escuchando ? 'Detener Escucha' : 'Iniciar Escucha'}
+                </Button>
+              </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="nombre">Nombre Completo</Label>
-            <Input id="nombre" {...register("nombre")} placeholder="Ingrese su nombre completo" />
-            {errors.nombre && <p className="text-red-500 text-sm">{errors.nombre.message}</p>}
-          </div>
+              <div className="space-y-2">
+                <Label htmlFor="nombre">Nombre Completo</Label>
+                <Input id="nombre" {...register("nombre")} placeholder="Ingrese su nombre completo" />
+                {errors.nombre && <p className="text-red-500 text-sm">{errors.nombre.message}</p>}
+              </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="curp">CURP</Label>
-            <Input id="curp" {...register("curp")} placeholder="Ingrese su CURP" />
-            {errors.curp && <p className="text-red-500 text-sm">{errors.curp.message}</p>}
-          </div>
+              <div className="space-y-2">
+                <Label htmlFor="curp">CURP</Label>
+                <Input id="curp" {...register("curp")} placeholder="Ingrese su CURP" />
+                {errors.curp && <p className="text-red-500 text-sm">{errors.curp.message}</p>}
+              </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="edad">Edad</Label>
-            <Input id="edad" type="number" {...register("edad", { valueAsNumber: true })} placeholder="Ingrese su edad" />
-            {errors.edad && <p className="text-red-500 text-sm">{errors.edad.message}</p>}
-          </div>
+              <div className="space-y-2">
+                <Label htmlFor="edad">Edad</Label>
+                <Input id="edad" type="number" {...register("edad", { valueAsNumber: true })} placeholder="Ingrese su edad" />
+                {errors.edad && <p className="text-red-500 text-sm">{errors.edad.message}</p>}
+              </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="sexo">Sexo</Label>
-            <Select onValueChange={(value) => register("sexo").onChange({ target: { value } })}>
-              <SelectTrigger id="sexo">
-                <SelectValue placeholder="Seleccione su sexo" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="masculino">Masculino</SelectItem>
-                <SelectItem value="femenino">Femenino</SelectItem>
-                <SelectItem value="otro">Otro</SelectItem>
-              </SelectContent>
-            </Select>
-            {errors.sexo && <p className="text-red-500 text-sm">{errors.sexo.message}</p>}
-          </div>
+              <div className="space-y-2">
+                <Label htmlFor="sexo">Sexo</Label>
+                <Select onValueChange={(value) => register("sexo").onChange({ target: { value } })}>
+                  <SelectTrigger id="sexo">
+                    <SelectValue placeholder="Seleccione su sexo" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="masculino">Masculino</SelectItem>
+                    <SelectItem value="femenino">Femenino</SelectItem>
+                    <SelectItem value="otro">Otro</SelectItem>
+                  </SelectContent>
+                </Select>
+                {errors.sexo && <p className="text-red-500 text-sm">{errors.sexo.message}</p>}
+              </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="peso">Peso (kg)</Label>
-            <Input id="peso" type="number" {...register("peso", { valueAsNumber: true })} placeholder="Ingrese su peso" />
-            {errors.peso && <p className="text-red-500 text-sm">{errors.peso.message}</p>}
-          </div>
+              <div className="space-y-2">
+                <Label htmlFor="peso">Peso (kg)</Label>
+                <Input id="peso" type="number" {...register("peso", { valueAsNumber: true })} placeholder="Ingrese su peso" />
+                {errors.peso && <p className="text-red-500 text-sm">{errors.peso.message}</p>}
+              </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="altura">Altura (cm)</Label>
-            <Input id="altura" type="number" {...register("altura", { valueAsNumber: true })} placeholder="Ingrese su altura" />
-            {errors.altura && <p className="text-red-500 text-sm">{errors.altura.message}</p>}
-          </div>
+              <div className="space-y-2">
+                <Label htmlFor="altura">Altura (cm)</Label>
+                <Input id="altura" type="number" {...register("altura", { valueAsNumber: true })} placeholder="Ingrese su altura" />
+                {errors.altura && <p className="text-red-500 text-sm">{errors.altura.message}</p>}
+              </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="motivoConsulta">Motivo de Consulta</Label>
-            <Textarea id="motivoConsulta" {...register("motivoConsulta")} placeholder="Describa brevemente el motivo de su consulta" />
-            {errors.motivoConsulta && <p className="text-red-500 text-sm">{errors.motivoConsulta.message}</p>}
-          </div>
+              <div className="space-y-2">
+                <Label htmlFor="motivoConsulta">Motivo de Consulta</Label>
+                <Textarea id="motivoConsulta" {...register("motivoConsulta")} placeholder="Describa brevemente el motivo de su consulta" />
+                {errors.motivoConsulta && <p className="text-red-500 text-sm">{errors.motivoConsulta.message}</p>}
+              </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="antecedentesNoPatologicos">Antecedentes Personales No Patológicos</Label>
-            <Textarea id="antecedentesNoPatologicos" {...register("antecedentesNoPatologicos")} placeholder="Ingrese sus antecedentes no patológicos" />
-            {errors.antecedentesNoPatologicos && <p className="text-red-500 text-sm">{errors.antecedentesNoPatologicos.message}</p>}
-          </div>
+              <div className="space-y-2">
+                <Label htmlFor="antecedentesNoPatologicos">Antecedentes Personales No Patológicos</Label>
+                <Textarea id="antecedentesNoPatologicos" {...register("antecedentesNoPatologicos")} placeholder="Ingrese sus antecedentes no patológicos" />
+                {errors.antecedentesNoPatologicos && <p className="text-red-500 text-sm">{errors.antecedentesNoPatologicos.message}</p>}
+              </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="antecedentesPatologicos">Antecedentes Personales Patológicos</Label>
-            <Textarea id="antecedentesPatologicos" {...register("antecedentesPatologicos")} placeholder="Ingrese sus antecedentes patológicos" />
-            {errors.antecedentesPatologicos && <p className="text-red-500 text-sm">{errors.antecedentesPatologicos.message}</p>}
-          </div>
+              <div className="space-y-2">
+                <Label htmlFor="antecedentesPatologicos">Antecedentes Personales Patológicos</Label>
+                <Textarea id="antecedentesPatologicos" {...register("antecedentesPatologicos")} placeholder="Ingrese sus antecedentes patológicos" />
+                {errors.antecedentesPatologicos && <p className="text-red-500 text-sm">{errors.antecedentesPatologicos.message}</p>}
+              </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="antecedentesFamiliares">Antecedentes Heredo Familiares</Label>
-            <Textarea id="antecedentesFamiliares" {...register("antecedentesFamiliares")} placeholder="Ingrese sus antecedentes familiares" />
-            {errors.antecedentesFamiliares && <p className="text-red-500 text-sm">{errors.antecedentesFamiliares.message}</p>}
-          </div>
-        </form>
-      </CardContent>
-      <CardFooter>
-        <Button 
-          type="submit" 
-          className="w-full bg-blue-500 hover:bg-blue-600" 
-          onClick={handleSubmit(onSubmit)}
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? (
-            <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Enviando...
-            </>
-          ) : (
-            'Enviar Información'
-          )}
-        </Button>
-      </CardFooter>
-    </Card>
+              <div className="space-y-2">
+                <Label htmlFor="antecedentesFamiliares">Antecedentes Heredo Familiares</Label>
+                <Textarea id="antecedentesFamiliares" {...register("antecedentesFamiliares")} placeholder="Ingrese los antecedentes de su familia" />
+                {errors.antecedentesFamiliares && <p className="text-red-500 text-sm">{errors.antecedentesFamiliares.message}</p>}
+              </div>
+
+              <Button type="submit" disabled={isSubmitting} className="w-full bg-blue-500 hover:bg-blue-600">
+                {isSubmitting ? <Loader2 className="animate-spin h-4 w-4 mr-2" /> : 'Registrar Paciente'}
+              </Button>
+            </form>
+          </ScrollArea>
+        </CardContent>
+        <CardFooter>
+          <p className="text-sm text-gray-500">Gracias por confiar en nuestro servicio médico.</p>
+        </CardFooter>
+      </Card>
+    </div>
   )
 }
